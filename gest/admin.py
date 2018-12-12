@@ -1,13 +1,25 @@
 from django.contrib import admin
-from .models import ServDomini
+from .models import Server, Anagrafica
 
-class ServDominiAdmin(admin.ModelAdmin):
-    list_display = ("serv_dominio","indirizzo_ip",'nickname_serv','hostname_serv','user_psw',)
+class ServerAdmin(admin.ModelAdmin):
+    list_display = ("server_tipo","indirizzo_ip",'nickname_serv','hostname_serv','abbreviazione',)
     fieldsets = [
         ('Server', {
-            'fields': ['serv_dominio', 'indirizzo_ip','nickname_serv','hostname_serv','user_psw']
+            'fields': ['server_tipo', 'indirizzo_ip','nickname_serv','hostname_serv','abbreviazione','details',]
         }),
     ]
 
+admin.site.register(Server,ServerAdmin)
 
-admin.site.register(ServDomini,ServDominiAdmin)
+
+class AnagraficaAdmin(admin.ModelAdmin):
+    list_disply =('ragioneSociale','piva','cf','email')
+    fieldsets = [
+        ('Anagrafica', {
+            'fields': ['ragioneSociale','piva','cf','indirizzoLegale','nome','cognome','indirizzo','citta','email','telefono','note']
+        }
+         )
+
+    ]
+
+admin.site.register(Anagrafica,AnagraficaAdmin)
