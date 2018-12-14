@@ -33,6 +33,9 @@ class Anagrafica(models.Model):
                 self.telefono,
                 ]
 
+    class Meta:
+        verbose_name_plural = 'Anagrafica'
+
 
 ############ Server ########
 
@@ -50,6 +53,6 @@ class Server(models.Model):
     def __str__(self):
         return u'%s %s %s' % (self.server_tipo, self.hostname_serv, self.indirizzo_ip)
 
-
-
+    class Meta:
+        verbose_name_plural ='Servers'
 
